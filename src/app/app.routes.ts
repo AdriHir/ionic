@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { FirstDogPage } from './first-dog/first-dog.page';
 
 export const routes: Routes = [
   {
@@ -10,4 +11,9 @@ export const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full',
   },
+  {
+    path: 'first-dog',
+    loadComponent: () => import('./first-dog/first-dog.page').then( m => m.FirstDogPage)
+  },
+
 ];
