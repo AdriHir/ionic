@@ -1,3 +1,11 @@
-<p *ngFor="let item of toEdit">
-  contene de l'input {{item.name}}
-</p>
+<div *ngFor="let item of toEdit">
+  <ion-input class="ion-text-center" label ="Name" [(ngModel)]="item.name"></ion-input>
+  <ion-input label ="Breed" [(ngModel)]="item.firstname"></ion-input>
+  <ion-datetime-button datetime={{item.id}}></ion-datetime-button>
+  <ion-modal [keepContentsMounted]="true">
+    <ng-template>
+      <ion-datetime id={{item.id}}></ion-datetime>
+    </ng-template>
+  </ion-modal>
+
+</div>

@@ -1,13 +1,16 @@
 import { Component,Input, OnInit } from '@angular/core';
 import { Dog } from '../Entities';
 import { CommonModule } from '@angular/common';
+import { IonInput, IonDatetime, IonDatetimeButton, IonModal } from "@ionic/angular/standalone";
+import { FormsModule } from '@angular/forms';
+import { FirstDogPage } from '../first-dog/first-dog.page';
 
 @Component({
   selector: 'app-dog-form',
   templateUrl: './dog-form.component.html',
   styleUrls: ['./dog-form.component.scss'],
   standalone: true,
-  imports: [CommonModule]
+  imports: [IonModal, IonDatetimeButton, IonDatetime, IonInput, CommonModule,FormsModule,FirstDogPage]
 })
 export class DogFormComponent  implements OnInit {
   @Input()

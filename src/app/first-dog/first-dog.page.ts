@@ -11,7 +11,7 @@ import { DogFormComponent } from "../dog-form/dog-form.component";
   templateUrl: './first-dog.page.html',
   styleUrls: ['./first-dog.page.scss'],
   standalone: true,
-  imports: [IonButton, IonButtons, IonCardContent, IonCardSubtitle, IonCardTitle, IonCardHeader, IonCard, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, RouterLinkActive, RouterModule, DogFormComponent]
+  imports: [FormsModule,IonButton, IonButtons, IonCardContent, IonCardSubtitle, IonCardTitle, IonCardHeader, IonCard, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, RouterLinkActive, RouterModule, DogFormComponent]
 })
 export class FirstDogPage implements OnInit {
   Dog!:Dog[];
