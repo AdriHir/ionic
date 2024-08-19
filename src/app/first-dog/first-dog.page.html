@@ -1,17 +1,24 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>FirstDog</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="showForm=true">
+        <ion-title class="nav-link active">modif</ion-title>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-card *ngFor="let item of Dog">
-  <ion-card-header>
-    <ion-card-title>{{item.name}}</ion-card-title>
-    <ion-card-subtitle>{{item.firstname}}</ion-card-subtitle>
-    <ion-card-subtitle>{{item.breed}}</ion-card-subtitle>
-    <ion-card-subtitle>{{item.birthdate}}</ion-card-subtitle>
-  </ion-card-header>
+<ion-content>
+  <app-dog-form [toEdit]="Dog" *ngIf="showForm"></app-dog-form>
+  <div *ngIf="!showForm">
+    <ion-card *ngFor="let item of Dog">
+      <ion-card-header>
+        <ion-card-title>{{item.name}}</ion-card-title>
+        <ion-card-subtitle>{{item.firstname}}</ion-card-subtitle>
+        <ion-card-subtitle>{{item.breed}}</ion-card-subtitle>
+        <ion-card-subtitle>{{item.birthdate}}</ion-card-subtitle>
+      </ion-card-header>
+    </ion-card>
+  </div>
+</ion-content>
 
-  <ion-card-content>
-    Here's a small text description for the card content. Nothing more, nothing less.
-  </ion-card-content>
-</ion-card>
+
