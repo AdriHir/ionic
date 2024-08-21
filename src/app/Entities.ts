@@ -1,7 +1,6 @@
 export interface Dog {
-    id: number,
-    name: string,
-    firstname: string,
-    breed: string,
-    birthdate: string
+    id?: number;
+    name: string;
+    breed: string;
+    birthdate: Date|string;
 }

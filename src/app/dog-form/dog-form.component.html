@@ -1,11 +1,13 @@
-<div *ngFor="let item of toEdit">
-  <ion-input class="ion-text-center" label ="Name" [(ngModel)]="item.name"></ion-input>
-  <ion-input label ="Breed" [(ngModel)]="item.firstname"></ion-input>
-  <ion-datetime-button datetime={{item.id}}></ion-datetime-button>
-  <ion-modal [keepContentsMounted]="true">
-    <ng-template>
-      <ion-datetime id={{item.id}}></ion-datetime>
-    </ng-template>
-  </ion-modal>
+<ion-input label="Name" [(ngModel)]="toEdit.name"></ion-input>
+<ion-input label="Breed" [(ngModel)]="toEdit.breed"></ion-input>
+<ion-datetime-button datetime="picker" ></ion-datetime-button>
+<ion-modal [keepContentsMounted]="true">
+  <ng-template>
+    <ion-datetime id="picker" presentation="date" [(ngModel)]="toEdit.birthdate"></ion-datetime>
+  </ng-template>
+</ion-modal>
 
-</div>
+<ion-button (click)="apply.emit()">Apply</ion-button>
+
+<!-- 
+label-placement="floating" fill="outline" placeholder="change firstname" class="ion-text-center" -->
