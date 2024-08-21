@@ -19,7 +19,7 @@ import { DogFormComponent } from "../dog-form/dog-form.component";
 export class DogListPage implements OnInit {
   // la propriete contenant la liste des chiens
   doglist!:Dog[];
-  
+  selected?:Dog;
   addDog:Dog = {
     name: '',
     breed: '',
@@ -35,20 +35,26 @@ export class DogListPage implements OnInit {
     this.DogService.getAllDog().subscribe(data=>this.doglist=data)
 
   }
-  deleteDog(id:number){
-    this.DogService.deleteDogbyId(id).subscribe({
-      next: (response) => {
-        // console.log(response);
-        this.route.navigateByUrl('/');
-      },
-      error: (error) => {
-        console.log(error);
-      }
+  deleteDog(){
+    this.DogService.deleteDogbyId(this.selected?.id).subscribe(()=>{
+      this.doglist=this.doglist.filter(item=>item.id != this.selected?.id)
+      this.selected=undefined
     })
   }
   postDog(){
     this.DogService.dogAdd(this.addDog).subscribe(data=>this.doglist.push(data));
   }
   
+  select(dog:Dog){
+    if(this.selected==dog){
+      this.selected = undefined
+    }else{
+      this.selected =dog;
+    }
+  }
+  updateDog(){
+    if(this.selected)
+    this.DogService.updateDog(this.selected).subscribe(data=>this.doglist.push(data))
+  }
  // @ViewChild(IonModal) modal!: IonModal;
 }

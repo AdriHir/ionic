@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, input, Input, OnInit } from '@angular/core';
 import { IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonButton } from "@ionic/angular/standalone";
 import { Dog } from '../Entities';
 import { DatePipe } from '@angular/common';
@@ -13,6 +13,9 @@ import { DatePipe } from '@angular/common';
 export class DogCardComponent  implements OnInit {
   @Input({required:true})
   dog!:Dog;
+  
+  @Input()
+  isSelected = false;
 
   constructor() { }
 

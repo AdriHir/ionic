@@ -1,7 +1,17 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <!-- toolbar  -->
+  <ion-toolbar >
     <ion-title>DogList</ion-title>
-  </ion-toolbar>
+    <ion-buttons slot="end" *ngIf="selected"> <!-- *ng if=selected fait en sorte que la balise s'affiche ou pas en fonctione de la variable selected-->
+      <ion-button (click)="deleteDog()">
+        <ion-icon icon="trash-outline"></ion-icon>  
+      </ion-button>
+      <ion-button (click)="modal.present()">
+        <ion-icon icon="create-outline"></ion-icon>  
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>    
+  
 </ion-header>
 
 <ion-content [fullscreen]="true">
@@ -10,13 +20,10 @@
       <ion-title size="large">DogList</ion-title>
     </ion-toolbar>
   </ion-header>
-
+  
   @for (item of doglist; track item.id) {
-    <app-dog-card [dog]="item"></app-dog-card>
-    <ion-button *ngIf="item.id" (click)="deleteDog(item.id)">
-      Supprimer
-    </ion-button>
-  }
+    <app-dog-card [isSelected]="selected==item" [dog]="item" (click)="select(item)"></app-dog-card> <!-- ngFor of -->
+   }
 
   <ion-fab horizontal="end" vertical="bottom" slot="fixed">
     <ion-fab-button id="open-modal">
@@ -35,11 +42,19 @@
         </ion-toolbar>
       </ion-header>
       <ion-content>
-        <app-dog-form [toEdit]="addDog" (apply)="postDog();modal.dismiss()"></app-dog-form>
+        <app-dog-form [toEdit]="addDog" (apply)="postDog(); modal.dismiss()" *ngIf="!selected"></app-dog-form>
+        <app-dog-form [toEdit]="selected" (apply)="updateDog(); modal.dismiss()" *ngIf="selected"></app-dog-form>
       </ion-content>
     </ng-template>
   </ion-modal>
 </ion-content>
 
+<!-- @if (a > b) {
+  {{a}} is greater than {{b}}
+} @else if (b > a) {
+  {{a}} is less than {{b}}
+} @else {
+  {{a}} is equal to {{b}}
+} -->
 
 
