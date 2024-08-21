@@ -54,7 +54,7 @@ export class DogListPage implements OnInit {
   }
   updateDog(){
     if(this.selected)
-    this.DogService.updateDog(this.selected).subscribe(data=>this.doglist.push(data))
+    this.DogService.updateDog(this.selected).subscribe()
   }
  // @ViewChild(IonModal) modal!: IonModal;
 }
